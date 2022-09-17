@@ -1,0 +1,15 @@
+pyinstaller -F tests.py --noconsole //单个文件不带console界面
+pyinstaller -F -w -i logo1.ico tests.spec
+pyinstaller -F -w tests.py -p go_nogo.py --hidden-import psychopy 
+
+（1）pyinstaller -F -w xxx.py；
+（2）修改上一把生成的xxx.spec文件，添加资源文件；
+（3）pyinstaller xxx.spec 打包为exe文件。
+
+print如果没有console会影响输出
+-d all 调试参数
+
+pyinstaller -F -c tests.py --collect-all freetype
+pyinstaller -F -c tests.py --noconfirm -d all --collect-all freetype
+
+pyinstaller -F tests.spec

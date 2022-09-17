@@ -1,0 +1,7 @@
+﻿pic,corrAns,PracticeTrials.thisRepN,PracticeTrials.thisTrialN,PracticeTrials.thisN,PracticeTrials.thisIndex,rt1,polygon.started,polygon.stopped,key_stim.keys,key_stim.corr,key_stim.started,key_stim.stopped,text_fb.started,text_fb.stopped,admin,participant,session,date,frameRate,
+picResource\go_nogo\whiteRect.png,j,0,0,0,3,0.8,6.192633499998919,None,None,0,7.025500499999907,None,8.508268899997347,None,testAdmin,participantTest1,1,2022_May_06_2102,60.230151455175594,
+picResource\go_nogo\purpleTri.png,None,0,1,1,6,0.5,9.50687139999718,None,None,1,10.006790299998102,None,11.521127399999386,None,testAdmin,participantTest1,1,2022_May_06_2102,60.230151455175594,
+picResource\go_nogo\whiteTri.png,j,0,2,2,2,0.5,12.521004399997764,None,None,0,13.020284199999878,None,14.535616299999674,None,testAdmin,participantTest1,1,2022_May_06_2102,60.230151455175594,
+picResource\go_nogo\whiteRect.png,j,0,3,3,1,0.8,15.534660299999814,None,None,0,16.333988999998837,None,17.849393299999065,None,testAdmin,participantTest1,1,2022_May_06_2102,60.230151455175594,
+picResource\go_nogo\whiteTri.png,j,0,4,4,4,1.0,18.84799109999949,None,None,0,19.84709909999947,None,21.36225639999975,None,testAdmin,participantTest1,1,2022_May_06_2102,60.230151455175594,
+,,,,,,0.8,,,,,,,,,,,,,,
