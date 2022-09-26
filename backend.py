@@ -6,10 +6,28 @@ studentID: 518021910368
 School: SJTU
 Date: 2022-09-16 01:26:33
 LastEditors: Seven
-LastEditTime: 2022-09-17 20:15:58
+LastEditTime: 2022-09-27 02:12:41
 '''
 from flask import Flask, request
 from flanker import flanker
+from go_nogo import go_Nogo
+from stroop import stroop
+
+from Twoback import TwoBack
+from go_nogo import go_Nogo
+from psychopy import locale_setup
+from psychopy import prefs
+from psychopy import sound, gui, visual, core, data, event, clock, colors
+from psychopy.constants import (NOT_STARTED, STARTED, PLAYING, PAUSED,
+                                STOPPED, FINISHED, PRESSED, RELEASED, FOREVER)
+
+import numpy as np  # whole numpy lib is available, prepend 'np.'
+from numpy import (sin, cos, tan, log, log10, pi, average,
+                   sqrt, std, deg2rad, rad2deg, linspace, asarray)
+from numpy.random import random, randint, normal, shuffle, choice as randchoice
+import os  # handy system and path functions
+import sys  # to get file system encoding
+import json
 
 # 创建Flask的实例对象
 app = Flask(__name__)
@@ -28,13 +46,31 @@ def packRes(res={}):
 @app.route('/flanker', methods=['GET'])
 def do_flanker():
     args = request.args
-    print(args)
+    # print(args)
     admin = args.get('admin')
     participant = args.get('participant')
     session = args.get('session')
     res = flanker(admin=admin, participant=participant, session=session)
     return packRes(res=res)
 
+
+@app.route('/go_nogo',methods=['GET'])
+def do_go_nogo():
+    args=request.args
+    admin = args.get('admin')
+    participant = args.get('participant')
+    session = args.get('session')
+    res=go_Nogo(admin=admin, participant=participant, session=session)
+    return packRes(res=res)
+
+@app.route('/stroop',methods=['GET'])
+def do_stroop():
+    args=request.args
+    admin = args.get('admin')
+    participant = args.get('participant')
+    session = args.get('session')
+    res=stroop(admin=admin, participant=participant, session=session)
+    return packRes(res=res)
 
 @app.route('/helloworld', methods=['GET'])
 def helloworld():
