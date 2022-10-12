@@ -54,7 +54,7 @@ def mycopyfile(srcfile, dstpath, subdir=None):  # 复制函数
 
 
 def get_all_participant_sessions(admin):
-    outDirName = os.path.join(outDir, admin + time.strftime("_%Y%m%d-%H:%M:%S", time.localtime()))
+    outDirName = os.path.join(outDir, admin + time.strftime("_%Y%m%d-%H%M%S", time.localtime()))
     for root, dirs, files in os.walk(dataDir):
         for c_test_type in dirs:
             path = os.path.join(root, c_test_type, admin)  # admin directory list
@@ -69,7 +69,7 @@ def get_all_participant_sessions(admin):
 
 
 def get_all_sessions(admin, participant):
-    outDirName = os.path.join(outDir, admin + "_" + participant + time.strftime("_%Y%m%d-%H:%M:%S", time.localtime()))
+    outDirName = os.path.join(outDir, admin + "_" + participant + time.strftime("_%Y%m%d-%H%M%S", time.localtime()))
     for root, dirs, files in os.walk(dataDir):
         for c_test_type in dirs:
             path = os.path.join(root, c_test_type, admin)  # admin directory list
@@ -84,7 +84,7 @@ def get_all_sessions(admin, participant):
 
 
 def get_all_results_of_one_test(test):
-    outDirName = os.path.join(outDir, test + time.strftime("_%Y%m%d-%H:%M:%S", time.localtime()))
+    outDirName = os.path.join(outDir, test + time.strftime("_%Y%m%d-%H%M%S", time.localtime()))
     for root, dirs, files in os.walk(os.path.join(dataDir, test)):
         for c_admin in dirs:
             path = os.path.join(root, c_admin)  # admin directory list
