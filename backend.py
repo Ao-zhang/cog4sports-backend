@@ -54,23 +54,25 @@ def do_flanker():
     return packRes(res=res)
 
 
-@app.route('/go_nogo',methods=['GET'])
+@app.route('/go_nogo', methods=['GET'])
 def do_go_nogo():
-    args=request.args
+    args = request.args
     admin = args.get('admin')
     participant = args.get('participant')
     session = args.get('session')
-    res=go_Nogo(admin=admin, participant=participant, session=session)
+    res = go_Nogo(admin=admin, participant=participant, session=session)
     return packRes(res=res)
 
-@app.route('/stroop',methods=['GET'])
+
+@app.route('/stroop', methods=['GET'])
 def do_stroop():
-    args=request.args
+    args = request.args
     admin = args.get('admin')
     participant = args.get('participant')
     session = args.get('session')
-    res=stroop(admin=admin, participant=participant, session=session)
+    res = stroop(admin=admin, participant=participant, session=session)
     return packRes(res=res)
+
 
 @app.route('/helloworld', methods=['GET'])
 def helloworld():
