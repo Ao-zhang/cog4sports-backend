@@ -4,10 +4,12 @@ Version: 1.0
 Author: Zhang AO
 studentID: 518021910368
 School: SJTU
-Date: 2022-09-16 01:26:33
+Date: 2022-09-26 20:46:08
 LastEditors: Seven
-LastEditTime: 2022-09-27 02:12:41
+LastEditTime: 2022-10-13 01:22:55
 '''
+#-*- coding : utf-8-*-
+# coding:unicode_escape
 from flask import Flask, request
 from flanker import flanker
 from go_nogo import go_Nogo
@@ -75,6 +77,8 @@ def do_stroop():
 @app.route('/helloworld', methods=['GET'])
 def helloworld():
     return "helloworld"
+
+
 
 
 if __name__ == '__main__':

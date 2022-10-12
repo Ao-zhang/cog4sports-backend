@@ -81,7 +81,7 @@ def ant(admin,participant,session):
 
     # Setup the Window
     win = visual.Window(
-        size=[1360, 768], fullscr=True, screen=0, 
+        size=[1360, 768], fullscr=False, screen=0, 
         winType='pyglet', allowGUI=False, allowStencil=False,
         monitor='testMonitor', color='white', colorSpace='rgb',
         blendMode='avg', useFBO=True, 

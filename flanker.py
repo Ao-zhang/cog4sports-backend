@@ -74,7 +74,7 @@ def flanker(admin,participant,session):
 
     # Setup the Window
     win = visual.Window(
-        size=[1920, 1080], fullscr=True, screen=0, 
+        size=[1920, 1080], fullscr=False, screen=0, 
         winType='pyglet', allowGUI=False, allowStencil=False,
         monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
         blendMode='avg', useFBO=True, 
