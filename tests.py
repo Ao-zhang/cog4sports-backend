@@ -31,48 +31,43 @@ from psychopy.hardware import keyboard
 import logging
 
 logger = logging.getLogger(__name__)
-logger.setLevel(level = logging.INFO)
+logger.setLevel(level=logging.INFO)
 handler = logging.FileHandler("log.txt")
 handler.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
-
-
-
 if __name__ == "__main__":
-    testInfo={"admin":"testAdmin","participant":"participantTest1","session":1,"gender":"male"}
-    testTask="flanker"
+    testInfo = {"admin": "testAdmin", "participant": "participantTest1", "session": 1, "gender": "male"}
+    testTask = "flanker"
     if len(sys.argv) > 4:
-        testInfo["admin"]=sys.argv[1]
-        testInfo["participant"]=sys.argv[2]
-        testInfo["session"]=sys.argv[3]
-        testTask=sys.argv[4]
-  
+        testInfo["admin"] = sys.argv[1]
+        testInfo["participant"] = sys.argv[2]
+        testInfo["session"] = sys.argv[3]
+        testTask = sys.argv[4]
+
     # res=go_Nogo(testInfo["admin"],testInfo["participant"],testInfo["gender"],testInfo["session"])
-    if testTask=="goNogo":
-        res=go_Nogo(testInfo["admin"],testInfo["participant"],testInfo["session"])
-        logger.info("go_Nogo res:%s \taccurate:%s"%(res.practice_record,res.getPracticeAccurate()))
+    if testTask == "goNogo":
+        res = go_Nogo(testInfo["admin"], testInfo["participant"], testInfo["session"])
+        logger.info("go_Nogo res:%s \taccurate:%s" % (res.practice_record, res.getPracticeAccurate()))
     # elif testTask=="twoBack":
     #     res=TwoBack(testInfo["admin"],testInfo["participant"],testInfo["session"])
-        # logger.info("twoBack res:%s \taccurate:%s"%(res.practice_record,res.getPracticeAccurate()))
-    elif testTask=="flanker":
-        res=flanker(testInfo["admin"],testInfo["participant"],testInfo["session"])
-        logger.info("flanker res:%s \taccurate:%s"%(res.practice_record,res.getPracticeAccurate()))
-    elif testTask=="stroop":
-        res=stroop(testInfo["admin"],testInfo["participant"],testInfo["session"])
-        logger.info("stroop res:%s \taccurate:%s"%(res.practice_record,res.getPracticeAccurate()))
-    
-  
-    res_dist={
-        "practice_record":res.practice_record,
-        "practice_accurate":res.getPracticeAccurate(),
-        "ex_record":res.ex_record,
-        "ex_accurate":res.getExAccurate(),
+    # logger.info("twoBack res:%s \taccurate:%s"%(res.practice_record,res.getPracticeAccurate()))
+    elif testTask == "flanker":
+        res = flanker(testInfo["admin"], testInfo["participant"], testInfo["session"])
+        logger.info("flanker res:%s \taccurate:%s" % (res.practice_record, res.getPracticeAccurate()))
+    elif testTask == "stroop":
+        res = stroop(testInfo["admin"], testInfo["participant"], testInfo["session"])
+        logger.info("stroop res:%s \taccurate:%s" % (res.practice_record, res.getPracticeAccurate()))
+
+    res_dist = {
+        "practice_record": res.practice_record,
+        "practice_accurate": res.getPracticeAccurate(),
+        "ex_record": res.ex_record,
+        "ex_accurate": res.getExAccurate(),
     }
-    jsObj = json.dumps(res_dist) 
-    fileObject = open('curTmp.json', 'w')  
-    fileObject.write(jsObj)  
-    fileObject.close()  
-    
+    jsObj = json.dumps(res_dist)
+    fileObject = open('curTmp.json', 'w')
+    fileObject.write(jsObj)
+    fileObject.close()
