@@ -1,2 +1,7 @@
 build/*
 dist/*
+*.zip
+/python
+output/*
+data/*
+*.log

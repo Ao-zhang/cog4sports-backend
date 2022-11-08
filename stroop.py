@@ -42,7 +42,7 @@ class stroopResponse:
   
 
 
-def stroop(admin,participant,session):
+def stroop(admin,participant,group,session):
     # Ensure that relative paths start from the same directory as this script
     # _thisDir = os.path.dirname(os.path.abspath(__file__))
     # os.chdir(_thisDir)
@@ -61,7 +61,7 @@ def stroop(admin,participant,session):
     returnValue=stroopResponse([],[])
     # modify part2
     # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-    filename = _thisDir + os.sep + u'data/stroop/%s/%s/%s' % (admin,participant,session)
+    filename = _thisDir + os.sep + u'data/stroop/%s/%s/%s/%s' % (admin,participant,group,session)
 
     # An ExperimentHandler isn't essential but helps with data saving
     thisExp = data.ExperimentHandler(name=expName, version='',
@@ -1910,3 +1910,4 @@ def stroop(admin,participant,session):
     win.close()
     return returnValue
     # print("stroop finished")
+    

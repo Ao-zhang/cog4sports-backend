@@ -44,7 +44,7 @@ target3=["←←→←←", "→→←→→"]
 distractor_imgs=['materials/up.png','materials/down.png','materials/left.png','materials/right.png']
 
 
-def ant(admin,participant,session):
+def ant(admin,participant,group,session):
     # Ensure that relative paths start from the same directory as this script
     # _thisDir = os.path.dirname(os.path.abspath(__file__))
     # os.chdir(_thisDir)

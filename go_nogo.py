@@ -39,7 +39,7 @@ class goNogoResponse:
 
 
 # def go_Nogo(admin,participant,gender,session):
-def go_Nogo(admin,participant,session):
+def go_Nogo(admin,participant,group,session):
     # Ensure that relative paths start from the same directory as this script
     # _thisDir = os.path.dirname(os.path.abspath(__file__))
     _thisDir="."
@@ -59,7 +59,7 @@ def go_Nogo(admin,participant,session):
 
     # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
 
-    filename = _thisDir + os.sep + u'data/go_nogo/%s/%s/%s' % (admin,participant,session)
+    filename = _thisDir + os.sep + u'data/go_nogo/%s/%s/%s/%s' % (admin,participant,group,session)
 
     # An ExperimentHandler isn't essential but helps with data saving
     thisExp = data.ExperimentHandler(name=expName, version='',
@@ -1547,3 +1547,5 @@ def go_Nogo(admin,participant,session):
     thisExp.abort()  # or data files will save again on exit
     win.close()
     return returnValue
+
+

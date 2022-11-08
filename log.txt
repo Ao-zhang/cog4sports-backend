@@ -1,6 +1,0 @@
-2022-05-06 21:05:59,098 - __main__ - INFO - res:[0]
-	accurate:0.0
-2022-06-11 16:13:16,532 - __main__ - INFO - res:[1] 	accurate:1.0
-2022-06-12 01:17:06,048 - __main__ - INFO - go_Nogo res:[0, 0, 0, 0, 1, 1, 0, 0] 	accurate:0.25
-2022-06-12 01:20:03,139 - __main__ - INFO - go_Nogo res:[1, 0, 1, 0, 0, 0, 0, 0] 	accurate:0.25
-2022-06-12 02:10:30,855 - __main__ - INFO - go_Nogo res:[0] 	accurate:0.0

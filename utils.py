@@ -2,10 +2,12 @@ from flask import Flask, request
 import shutil
 import time
 import os
+# sys.stdout = open(os.devnull, "w") 
 
 _thisDir = os.getcwd()
 dataDir = os.path.join(_thisDir, 'data')
 outDir = os.path.join(_thisDir, 'output')
+tmpDir= os.path.join(_thisDir, 'tmp')
 app = Flask(__name__)
 
 def create_dir_not_exist(path):
@@ -15,6 +17,7 @@ def create_dir_not_exist(path):
 
 create_dir_not_exist(outDir)
 create_dir_not_exist(dataDir)
+create_dir_not_exist(tmpDir)
 
 
 def del_(rootdir):
@@ -60,10 +63,13 @@ def get_all_participant_sessions(admin):
             for root1, dirs1, files1 in os.walk(path):
                 for c_par in dirs1:  # dirs1代表不同的参与者
                     path1 = os.path.join(root1, c_par)  # path1代表参与者的测试记录文件夹
-                    for root2, dirs2, files2 in os.walk(path1):
-                        for c_test_file in files2:  # dirs2代不同的测试结果文件内容
-                            path2 = os.path.join(root2, c_test_file)
-                            mycopyfile(path2, outDirName, subdir=os.path.join(c_test_type, c_par))
+                    for root2, dirs2, files2 in os.walk(path1): #dirs2代表不同的的group
+                        for c_group in dirs2: 
+                            path2=os.path.join(root2, c_group) # path2代表某个group的dir
+                            for root3, dirs3, files3 in os.walk(path2):
+                                for c_test_file in files3:  # files3代不同的测试结果文件内容
+                                    path3 = os.path.join(root3, c_test_file)
+                                    mycopyfile(path3, outDirName, subdir=os.path.join(c_test_type, c_par,c_group))
     return outDirName
 
 
@@ -72,13 +78,32 @@ def get_all_sessions(admin, participant):
     for root, dirs, files in os.walk(dataDir):
         for c_test_type in dirs:
             path = os.path.join(root, c_test_type, admin)  # admin directory list
-            for root1, dirs1, files1 in os.walk(path):
+            for root1, dirs1, files1 in os.walk(path):  
+                path1 = os.path.join(root1, participant)  # path1代表当前参与者的测试记录文件夹            
+                for root2, dirs2, files2 in os.walk(path1): #dirs2代表不同的的group
+                    for c_group in dirs2: 
+                        path2=os.path.join(root2, c_group) # path2代表某个group的dir
+                        for root3, dirs3, files3 in os.walk(path2):
+                            for c_test_file in files3:  # files3代不同的测试结果文件内容
+                                path3 = os.path.join(root3, c_test_file)
+                                mycopyfile(path3, outDirName, subdir=os.path.join(c_test_type,c_group))
+    return outDirName
+
+
+def get_all_group_results(admin, group):
+    outDirName = os.path.join(outDir, admin + "_" + group + time.strftime("_%Y%m%d-%H%M%S", time.localtime()))
+    for root, dirs, files in os.walk(dataDir):
+        for c_test_type in dirs:
+            path = os.path.join(root, c_test_type, admin)  # admin directory list
+            for root1, dirs1, files1 in os.walk(path):  
                 for c_par in dirs1:  # dirs1代表不同的参与者
-                    path1 = os.path.join(root1, c_par)  # path1代表参与者的测试记录文件夹
-                    for root2, dirs2, files2 in os.walk(path1):
-                        for c_test_file in files2:  # dirs2代不同的测试结果文件内容
-                            path2 = os.path.join(root2, c_test_file)
-                            mycopyfile(path2, outDirName, subdir=c_test_type)
+                    path1 = os.path.join(root1, c_par)  # path1代表参与者的测试记录文件夹          
+                    for root2, dirs2, files2 in os.walk(path1): #dirs2代表不同的的group
+                            path2=os.path.join(root2, group) # path2代表当前group的dir
+                            for root3, dirs3, files3 in os.walk(path2):
+                                for c_test_file in files3:  # files3代不同的测试结果文件内容
+                                    path3 = os.path.join(root3, c_test_file)
+                                    mycopyfile(path3, outDirName, subdir=os.path.join(c_test_type,c_par))
     return outDirName
 
 
@@ -90,10 +115,13 @@ def get_all_results_of_one_test(test):
             for root1, dirs1, files1 in os.walk(path):
                 for c_par in dirs1:  # dirs1代表不同的参与者
                     path1 = os.path.join(root1, c_par)  # path1代表参与者的测试记录文件夹
-                    for root2, dirs2, files2 in os.walk(path1):
-                        for c_test_file in files2:  # dirs2代不同的测试结果文件内容
-                            path2 = os.path.join(root2, c_test_file)
-                            mycopyfile(path2, outDirName, subdir=os.path.join(c_admin, c_par))
+                    for root2, dirs2, files2 in os.walk(path1): #dirs2代表不同的的group
+                        for c_group in dirs2: 
+                            path2=os.path.join(root2, c_group) # path2代表某个group的dir
+                            for root3, dirs3, files3 in os.walk(path2):
+                                for c_test_file in files3:  # files3代不同的测试结果文件内容
+                                    path3 = os.path.join(root3, c_test_file)
+                                    mycopyfile(path3, outDirName, subdir=os.path.join(test,c_par,c_group))
     return outDirName
 
 
@@ -119,6 +147,13 @@ def get_test_results_of_a_participant(): # 需要先有admin
     admin=args.get('admin')
     participant=args.get('participant')
     return get_all_sessions(admin,participant)
+
+@app.route('/get/results/group',methods=['GET']) # 获得某个participant的所有结果
+def get_test_results_of_a_group(): # 需要先有admin
+    args=request.args
+    admin=args.get('admin')
+    group=args.get('group')
+    return get_all_group_results(admin,group)
 
 if __name__ == "__main__":
     app.run(host="localhost", port =7071,debug=True)

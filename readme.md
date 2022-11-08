@@ -27,7 +27,7 @@
     returnValue=flankerResponse([],[],)
 
     # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-    filename = _thisDir + os.sep + u'data/XXX/%s/%s/%s' % (admin,participant,session)
+    filename = _thisDir + os.sep + u'data/XXX/%s/%s/%s/%s' % (admin,participant,group,session)
 
     # An ExperimentHandler isn't essential but helps with data saving
     thisExp = data.ExperimentHandler(name=expName, version='',

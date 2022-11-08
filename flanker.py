@@ -20,7 +20,10 @@ from psychopy.hardware import keyboard
 
 class flankerResponse:
     practice_record = []
-    ex_record = []
+    """      
+    Returns:
+        _type_: _description_
+    """    ex_record = []
 
     def __init__(self, practice, ex):
         self.practice_record = practice
@@ -33,7 +36,7 @@ class flankerResponse:
         return sum(self.ex_record) / len(self.ex_record)
 
 
-def flanker(admin, participant, session):
+def flanker(admin, participant, group, session):
     # Ensure that relative paths start from the same directory as this script
     # _thisDir = os.path.dirname(os.path.abspath(__file__))
     # os.chdir(_thisDir)
@@ -51,7 +54,7 @@ def flanker(admin, participant, session):
     returnValue = flankerResponse([], [])
 
     # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-    filename = _thisDir + os.sep + u'data/flanker/%s/%s/%s' % (admin, participant, session)
+    filename = _thisDir + os.sep + u'data/flanker/%s/%s/%s/%s' % (admin, participant, group, session)
 
     # An ExperimentHandler isn't essential but helps with data saving
     thisExp = data.ExperimentHandler(name=expName, version='',

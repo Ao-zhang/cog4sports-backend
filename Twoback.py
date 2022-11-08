@@ -40,26 +40,26 @@ class TwoBackResponse:
     def getExAccurate(self):
         return sum(self.ex_record)/len(self.ex_record)
 
-def TwoBack(admin,participant,session):
+def TwoBack(admin,participant,group,session):
 
     # Ensure that relative paths start from the same directory as this script
     # _thisDir = os.path.dirname(os.path.abspath(__file__))
     # os.chdir(_thisDir)
     _thisDir="."
-
+                                                                                                                                                                                           
     # Store info about the experiment session
     expInfo = {}
     expInfo['admin']=admin
     expInfo['participant']=participant
     expInfo['session']=session
-    expName="flanker"
+    expName="TwoBack"
     expInfo['date'] = data.getDateStr()  # add a simple timestamp
     print(expInfo['date'])
     
     returnValue=TwoBackResponse([],[])
 
     # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-    filename = _thisDir + os.sep + u'data/2_back/%s/%s/%s' % (admin,participant,session)
+    filename = _thisDir + os.sep + u'data/2_back/%s/%s/%s/%s' % (admin,participant,group,session)
 
     # An ExperimentHandler isn't essential but helps with data saving
     thisExp = data.ExperimentHandler(name=expName, version='',
@@ -1295,3 +1295,4 @@ def TwoBack(admin,participant,session):
     thisExp.abort()  # or data files will save again on exit
     win.close()
     return returnValue
+
