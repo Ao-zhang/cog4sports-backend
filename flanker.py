@@ -67,7 +67,7 @@ def flanker(admin, participant, group, session):
 
     # Setup the Window
     win = visual.Window(
-        size=[1920, 1080], fullscr=True, screen=0, 
+        size=[1920, 1080], fullscr=False, screen=0, 
         winType='pyglet', allowGUI=False, allowStencil=False,
         monitor='testMonitor', color=[0, 0, 0], colorSpace='rgb',
         blendMode='avg', useFBO=True,
@@ -1540,4 +1540,9 @@ def flanker(admin, participant, group, session):
     win.close()
     return returnValue
 
-# flanker("admin","participant","session")
+admin = 'admin'
+participant = 'participant'
+group = 'group'
+session = 'session'
+res=flanker(admin, participant, group, session)
+print(res)
