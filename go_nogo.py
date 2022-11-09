@@ -792,7 +792,6 @@ def go_Nogo(admin,participant,group,session):
     # set up handler to look after randomisation of conditions etc
     block1 = data.TrialHandler(nReps=20.0, method='fullRandom', 
         extraInfo=expInfo, originPath=-1,
-        # trialList=data.importConditions('tableResource/go_nogo.xlsx'),
         trialList=data.importConditions('tableResource/go_nogo.xlsx'),
         seed=None, name='block1')
     thisExp.addLoop(block1)  # add the loop to the experiment
