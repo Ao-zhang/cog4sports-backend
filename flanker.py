@@ -20,10 +20,7 @@ from psychopy.hardware import keyboard
 
 class flankerResponse:
     practice_record = []
-    """      
-    Returns:
-        _type_: _description_
-    """    ex_record = []
+    ex_record = []
 
     def __init__(self, practice, ex):
         self.practice_record = practice
@@ -70,7 +67,7 @@ def flanker(admin, participant, group, session):
 
     # Setup the Window
     win = visual.Window(
-        size=[1920, 1080], fullscr=False, screen=0, 
+        size=[1920, 1080], fullscr=True, screen=0, 
         winType='pyglet', allowGUI=False, allowStencil=False,
         monitor='testMonitor', color=[0, 0, 0], colorSpace='rgb',
         blendMode='avg', useFBO=True,

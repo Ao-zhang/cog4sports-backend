@@ -74,7 +74,7 @@ def go_Nogo(admin,participant,group,session):
 
     # Setup the Window
     win = visual.Window(
-        size=[1280, 720], fullscr=False, screen=0, 
+        size=[1280, 720], fullscr=True, screen=0, 
         winType='pyglet', allowGUI=False, allowStencil=False,
         monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
         blendMode='avg', useFBO=True, 
@@ -1549,3 +1549,9 @@ def go_Nogo(admin,participant,group,session):
     return returnValue
 
 
+admin = 'admin'
+participant = 'participant'
+group = 'group'
+session = 'session'
+res=go_Nogo(admin, participant, group, session)
+print(res)
