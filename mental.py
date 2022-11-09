@@ -74,7 +74,7 @@ def mental(admin, participant, group, session):
 
     # Setup the Window
     win = visual.Window(
-        size=(1024, 768), fullscr=True, screen=0, 
+        size=(1024, 768), fullscr=False, screen=0,
         winType='pyglet', allowGUI=False, allowStencil=False,
         monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
         blendMode='avg', useFBO=True, 
@@ -348,7 +348,9 @@ def mental(admin, participant, group, session):
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
         crossClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
         frameN = -1
-        
+        picture = thisPractice['picture']
+        RightAns = thisPractice['RightAns']
+
         # -------Run Routine "cross"-------
         while continueRoutine and routineTimer.getTime() > 0:
             # get current time
@@ -398,8 +400,7 @@ def mental(admin, participant, group, session):
                 thisComponent.setAutoDraw(False)
         practice.addData('text_2.started', text_2.tStartRefresh)
         practice.addData('text_2.stopped', text_2.tStopRefresh)
-        picture = thisComponent['picture']
-        RightAns = thisComponent['RightAns']
+
         # ------Prepare to start Routine "stim"-------
         continueRoutine = True
         # update component parameters for each repeat
@@ -732,6 +733,9 @@ def mental(admin, participant, group, session):
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
         crossClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
         frameN = -1
+
+        picture = thisBlock1['picture']
+        RightAns = thisBlock1['RightAns']
         
         # -------Run Routine "cross"-------
         while continueRoutine and routineTimer.getTime() > 0:
@@ -782,8 +786,7 @@ def mental(admin, participant, group, session):
                 thisComponent.setAutoDraw(False)
         block1.addData('text_2.started', text_2.tStartRefresh)
         block1.addData('text_2.stopped', text_2.tStopRefresh)
-        picture = thisComponent['picture']
-        RightAns = thisComponent['RightAns']
+
         # ------Prepare to start Routine "stim"-------
         continueRoutine = True
         # update component parameters for each repeat
@@ -1038,6 +1041,8 @@ def mental(admin, participant, group, session):
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
         crossClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
         frameN = -1
+        picture = thisBlock2['picture']
+        RightAns = thisBlock2['RightAns']
         
         # -------Run Routine "cross"-------
         while continueRoutine and routineTimer.getTime() > 0:
@@ -1088,8 +1093,7 @@ def mental(admin, participant, group, session):
                 thisComponent.setAutoDraw(False)
         block2.addData('text_2.started', text_2.tStartRefresh)
         block2.addData('text_2.stopped', text_2.tStopRefresh)
-        picture = thisComponent['picture']
-        RightAns = thisComponent['RightAns']
+
         # ------Prepare to start Routine "stim"-------
         continueRoutine = True
         # update component parameters for each repeat
@@ -1286,7 +1290,6 @@ def mental(admin, participant, group, session):
 
     # these shouldn't be strictly necessary (should auto-save)
     thisExp.saveAsWideText(filename+'.csv', delim='auto')
-    thisExp.saveAsPickle(filename)
     # make sure everything is closed down
     thisExp.abort()  # or data files will save again on exit
     win.close()

@@ -1903,7 +1903,7 @@ def stroop(admin,participant,group,session):
 
     # these shouldn't be strictly necessary (should auto-save)
     thisExp.saveAsWideText(filename+'.csv', delim='auto',appendFile=True,sortColumns=True)
-    # thisExp.saveAsPickle(filename)
+    # 
 
     # make sure everything is closed down
     thisExp.abort()  # or data files will save again on exit

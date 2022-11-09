@@ -1,8 +1,9 @@
  - trialList[]参数中的值需要重新定义
  - 创建returnValue
- - returnValue.practice_record.append(ex_resp.corr)
+ 
  - delete logging
- - 
+ - 补充缺失变量声明 搜索.trialList[0]
+ - 搜.corr) returnValue.practice_record.append(ex_resp.corr)
  - core.quit()注释掉 => return returnValue
  - --------------------------------------------
     # Store info about the experiment session
@@ -27,16 +28,18 @@
         dataFileName=filename)
 
 ----------------------------------------------
+
+ - fullscr=False 
  - savePickle=False
 
  - 反应时是.rt
 
- - 删除    
+ - 删除  已删除  
     thisExp.saveAsPickle(filename)
     logging.flush()
 
 
-- fullscr=False 
+
 
 _thisDir="."
 
@@ -55,14 +58,13 @@ ANT和2 back统计的是反应的按键 这个后面我在研究一下
 
 
 ## 注意⚠️
-- ant 统计的corr
+- ant/mental 统计的corr
 - 2-back统计的rt 后期改一下，
 
 ## Todo
-- ant add to Backend
+- ant/mental add to Backend
 - mental:
   - returnValue.ex_record.append(key_resp_2.corr)
-  - rt  和ant一样⚠️
 - more_odd
 - posner
 - stop_signal

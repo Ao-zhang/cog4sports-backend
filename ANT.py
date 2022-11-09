@@ -451,6 +451,10 @@ def ANT(admin, participant, group, session):
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
         fixationClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
         frameN = -1
+        loc = thisPractice['loc']
+        target = thisPractice['target']
+        distractor_type = thisPractice['distractor_type']
+        onset = thisPractice['onset']
 
         # -------Run Routine "fixation"-------
         while continueRoutine:
@@ -512,10 +516,6 @@ def ANT(admin, participant, group, session):
         image_dis3.setImage('picResource/ANT/fixation.png')
 
         # add missed variables from xlsx file
-        loc = thisComponent['loc']
-        target = thisComponent['target']
-        distractor_type = thisComponent['distractor_type']
-        onset = thisComponent['onset']
 
         text.setPos(loc)
         key_resp_2.keys = []
@@ -928,6 +928,10 @@ def ANT(admin, participant, group, session):
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
         fixationClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
         frameN = -1
+        loc = thisTrial['loc']
+        target = thisTrial['target']
+        distractor_type = thisTrial['distractor_type']
+        onset = thisTrial['onset']
 
         # -------Run Routine "fixation"-------
         while continueRoutine:
@@ -988,10 +992,7 @@ def ANT(admin, participant, group, session):
         image_dis2.setImage('picResource/ANT/blank.png')
         image_dis3.setImage('picResource/ANT/fixation.png')
         # add missed variables from xlsx file
-        loc = thisComponent['loc']
-        target = thisComponent['target']
-        distractor_type = thisComponent['distractor_type']
-        onset = thisComponent['onset']
+
 
         text.setPos(loc)
         key_resp_2.keys = []
@@ -1329,6 +1330,10 @@ def ANT(admin, participant, group, session):
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
         fixationClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
         frameN = -1
+        loc = thisTrial_2['loc']
+        target = thisTrial_2['target']
+        distractor_type = thisTrial_2['distractor_type']
+        onset = thisTrial_2['onset']
 
         # -------Run Routine "fixation"-------
         while continueRoutine:
@@ -1389,10 +1394,7 @@ def ANT(admin, participant, group, session):
         image_dis2.setImage('picResource/ANT/blank.png')
         image_dis3.setImage('picResource/ANT/fixation.png')
         # add missed variables from xlsx file
-        loc = thisComponent['loc']
-        target = thisComponent['target']
-        distractor_type = thisComponent['distractor_type']
-        onset = thisComponent['onset']
+
 
         text.setPos(loc)
         key_resp_2.keys = []
