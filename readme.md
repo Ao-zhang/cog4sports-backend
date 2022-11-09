@@ -1,13 +1,3 @@
-<!--
- * @Description: 
- * @Version: 1.0
- * @Author: Zhang AO
- * @studentID: 518021910368
- * @School: SJTU
- * @Date: 2022-04-29 01:02:56
- * @LastEditors: Seven
- * @LastEditTime: 2022-06-12 02:20:16
--->
  - trialList[]参数中的值需要重新定义
  - 创建returnValue
  - returnValue.practice_record.append(ex_resp.corr)
@@ -17,7 +7,7 @@
  - --------------------------------------------
     # Store info about the experiment session
     expInfo = {}
-    expInfo['admin']=admin
+    expInfo['admin']=admin 
     expInfo['participant']=participant
     expInfo['session']=session
     expName="flanker"
@@ -48,8 +38,7 @@
 
 - fullscr=False 
 
-
-- two back 结果显示问题
+_thisDir="."
 
 -----------------------------------
 Flanker：flanker_practice_resp.corr                                           
@@ -65,4 +54,7 @@ go no go：key_stim_2.corr
 ANT和2 back统计的是反应的按键 这个后面我在研究一下
 
 
-_thisDir="."
+## 注意⚠️
+- ant 统计的corr
+- 2-back统计的rt 后期改一下，
+

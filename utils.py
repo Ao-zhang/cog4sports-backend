@@ -4,7 +4,7 @@ import time
 import os
 # sys.stdout = open(os.devnull, "w") 
 
-_thisDir = os.getcwd()
+_thisDir="."
 dataDir = os.path.join(_thisDir, 'data')
 outDir = os.path.join(_thisDir, 'output')
 tmpDir= os.path.join(_thisDir, 'tmp')

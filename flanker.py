@@ -37,7 +37,7 @@ def flanker(admin, participant, group, session):
     # Ensure that relative paths start from the same directory as this script
     # _thisDir = os.path.dirname(os.path.abspath(__file__))
     # os.chdir(_thisDir)
-    _thisDir = os.getcwd()
+    _thisDir="."
 
     # Store info about the experiment session
     expInfo = {}
