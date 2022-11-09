@@ -77,7 +77,7 @@ def stroop(admin,participant,group,session):
 
     # Setup the Window
     win = visual.Window(
-        size=(1024, 768), fullscr=True, screen=0, 
+        size=(1024, 768), fullscr=False, screen=0, 
         winType='pyglet', allowGUI=False, allowStencil=False,
         monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
         blendMode='avg', useFBO=True, 
@@ -1911,3 +1911,9 @@ def stroop(admin,participant,group,session):
     return returnValue
     # print("stroop finished")
     
+admin = 'admin'
+participant = 'participant'
+group = 'group'
+session = 'session'
+res=stroop(admin, participant, group, session)
+print(res)
