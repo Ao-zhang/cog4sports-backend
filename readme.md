@@ -29,8 +29,7 @@
 
 ----------------------------------------------
 
- - fullscr=False 
- - savePickle=False
+ - fullscr=False
 
  - 反应时是.rt
 
@@ -58,14 +57,10 @@ ANT和2 back统计的是反应的按键 这个后面我在研究一下
 
 
 ## 注意⚠️
-- ant/mental 统计的corr
+- ant/mental/more_odd/posner 统计的corr
 - 2-back统计的rt 后期改一下，
 
 ## Todo
-- ant/mental add to Backend
-- mental:
-  - returnValue.ex_record.append(key_resp_2.corr)
-- more_odd
-- posner
+- ant/mental/more_odd/posner add to Backend
 - stop_signal
 - TTC
