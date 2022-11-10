@@ -11,8 +11,15 @@ LastEditTime: 2022-10-29 22:31:06
 #-*- coding : utf-8-*-
 # coding:unicode_escape
 from flask import Flask, request
+
+from ANT import ANT
+from TTC import TTC
 from flanker import *
 from go_nogo import *
+from mental import mental
+from more_odd import moreOdd
+from posner import posner
+from stop_signal import stopSignal
 from stroop import *
 
 from Twoback import *
@@ -104,8 +111,72 @@ def do_stroop():
     p = Process(target=stroop_write,args=(admin, participant, group, session))
     p.start() 
     return "success"
-    # res = stroop(admin=admin, participant=participant, session=session)
-    # return packRes(res=res)
+
+@app.route('/ant', methods=['GET'])
+def do_ANT():
+    args = request.args
+    admin = args.get('admin')
+    participant = args.get('participant')
+    group = args.get('group')
+    session = args.get('session')
+    p = Process(target=ANT_write,args=(admin, participant, group, session))
+    p.start()
+    return "success"
+
+@app.route('/mental', methods=['GET'])
+def do_mental():
+    args = request.args
+    admin = args.get('admin')
+    participant = args.get('participant')
+    group = args.get('group')
+    session = args.get('session')
+    p = Process(target=mental_write,args=(admin, participant, group, session))
+    p.start()
+    return "success"
+
+@app.route('/moreOdd', methods=['GET'])
+def do_more_odd():
+    args = request.args
+    admin = args.get('admin')
+    participant = args.get('participant')
+    group = args.get('group')
+    session = args.get('session')
+    p = Process(target=moreOdd_write,args=(admin, participant, group, session))
+    p.start()
+    return "success"
+
+@app.route('/posner', methods=['GET'])
+def do_posner():
+    args = request.args
+    admin = args.get('admin')
+    participant = args.get('participant')
+    group = args.get('group')
+    session = args.get('session')
+    p = Process(target=posner_write,args=(admin, participant, group, session))
+    p.start()
+    return "success"
+
+@app.route('/stopSignal', methods=['GET'])
+def do_stop_signal():
+    args = request.args
+    admin = args.get('admin')
+    participant = args.get('participant')
+    group = args.get('group')
+    session = args.get('session')
+    p = Process(target=stop_signal_write,args=(admin, participant, group, session))
+    p.start()
+    return "success"
+
+@app.route('/TTC', methods=['GET'])
+def do_TTC():
+    args = request.args
+    admin = args.get('admin')
+    participant = args.get('participant')
+    group = args.get('group')
+    session = args.get('session')
+    p = Process(target=TTC_write,args=(admin, participant, group, session))
+    p.start()
+    return "success"
 
 def flanker_write(admin, participant, group, session):
     res=flanker(admin, participant, group, session)
@@ -131,8 +202,44 @@ def TwoBack_write(admin, participant, group, session):
     res=TwoBack(admin, participant, group, session)
     out_file = open("./tmp/TwoBack.log", "w") 
     json.dump(object2dict(res),out_file,indent=4)
-
     return "TwoBack"
+
+
+def ANT_write(admin, participant, group, session):
+    res=ANT(admin, participant, group, session)
+    out_file = open("./tmp/ANT.log", "w")
+    json.dump(object2dict(res),out_file,indent=4)
+    return "ANT"
+
+def mental_write(admin, participant, group, session):
+    res=mental(admin, participant, group, session)
+    out_file = open("./tmp/mental.log", "w")
+    json.dump(object2dict(res),out_file,indent=4)
+    return "ANT"
+
+def moreOdd_write(admin, participant, group, session):
+    res=moreOdd(admin, participant, group, session)
+    out_file = open("./tmp/more_odd.log", "w")
+    json.dump(object2dict(res),out_file,indent=4)
+    return "more_odd"
+
+def posner_write(admin, participant, group, session):
+    res=posner(admin, participant, group, session)
+    out_file = open("./tmp/posner.log", "w")
+    json.dump(object2dict(res),out_file,indent=4)
+    return "posner"
+
+def stop_signal_write(admin, participant, group, session):
+    res=stopSignal(admin, participant, group, session)
+    out_file = open("./tmp/stop_signal.log", "w")
+    json.dump(object2dict(res),out_file,indent=4)
+    return "stop_signal"
+
+def TTC_write(admin, participant, group, session):
+    res=TTC(admin, participant, group, session)
+    out_file = open("./tmp/TTC.log", "w")
+    json.dump(object2dict(res),out_file,indent=4)
+    return "TTC"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=7777, debug=True)

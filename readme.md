@@ -61,5 +61,3 @@ ANT和2 back统计的是反应的按键 这个后面我在研究一下
 - 2-back统计的rt
 - TTC 统计的rt，且没有practice
 
-## Todo
-- ant/mental/more_odd/posner/stop_signal/TTC add to Backend
