@@ -307,6 +307,7 @@ def TwoBack(admin,participant,group,session):
     thisExp.addData('key_resp_2.keys',key_resp_2.keys)
     if key_resp_2.keys != None:  # we had a response
         thisExp.addData('key_resp_2.rt', key_resp_2.rt)
+        # returnValue.ex_record.append(key_resp_2.rt)
     thisExp.addData('key_resp_2.started', key_resp_2.tStartRefresh)
     thisExp.addData('key_resp_2.stopped', key_resp_2.tStopRefresh)
     thisExp.nextEntry()
@@ -703,6 +704,7 @@ def TwoBack(admin,participant,group,session):
     thisExp.addData('key_resp_3.keys',key_resp_3.keys)
     if key_resp_3.keys != None:  # we had a response
         thisExp.addData('key_resp_3.rt', key_resp_3.rt)
+        # returnValue.ex_record.append(key_resp_3.rt)
     thisExp.addData('key_resp_3.started', key_resp_3.tStartRefresh)
     thisExp.addData('key_resp_3.stopped', key_resp_3.tStopRefresh)
     thisExp.nextEntry()
@@ -1004,6 +1006,7 @@ def TwoBack(admin,participant,group,session):
     thisExp.addData('key_resp_4.keys',key_resp_4.keys)
     if key_resp_4.keys != None:  # we had a response
         thisExp.addData('key_resp_4.rt', key_resp_4.rt)
+        # returnValue.ex_record.append(key_resp_4.rt)
     thisExp.addData('key_resp_4.started', key_resp_4.tStartRefresh)
     thisExp.addData('key_resp_4.stopped', key_resp_4.tStopRefresh)
     thisExp.nextEntry()
@@ -1207,7 +1210,7 @@ def TwoBack(admin,participant,group,session):
         block2.addData('key_resp.keys',key_resp.keys)
         if key_resp.keys != None:  # we had a response
             block2.addData('key_resp.rt', key_resp.rt)
-            returnValue.ex_record.append(key_resp_4.rt) # block2
+            returnValue.ex_record.append(key_resp.rt) # block2
         block2.addData('key_resp.started', key_resp.tStartRefresh)
         block2.addData('key_resp.stopped', key_resp.tStopRefresh)
         thisExp.nextEntry()
