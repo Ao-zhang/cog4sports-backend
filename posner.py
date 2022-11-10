@@ -99,7 +99,7 @@ def posner(admin, participant, group, session):
     image_intro = visual.ImageStim(
         win=win,
         name='image_intro', 
-        image='materials/幻灯片1.png', mask=None,
+        image='picResource/posner/幻灯片1.png', mask=None,
         ori=0.0, pos=(0, 0), size=(1.8, 1),
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
