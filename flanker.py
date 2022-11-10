@@ -1538,9 +1538,9 @@ def flanker(admin, participant, group, session):
     win.close()
     return returnValue
 
-admin = 'admin'
-participant = 'participant'
-group = 'group'
-session = 'session'
-res=flanker(admin, participant, group, session)
-print(res)
+# admin = 'admin'
+# participant = 'participant'
+# group = 'group'
+# session = 'session'
+# res=flanker(admin, participant, group, session)
+# print(res)

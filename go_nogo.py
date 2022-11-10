@@ -1548,9 +1548,9 @@ def go_Nogo(admin,participant,group,session):
     return returnValue
 
 
-admin = 'admin'
-participant = 'participant'
-group = 'group'
-session = 'session'
-res=go_Nogo(admin, participant, group, session)
-print(res)
+# admin = 'admin'
+# participant = 'participant'
+# group = 'group'
+# session = 'session'
+# res=go_Nogo(admin, participant, group, session)
+# print(res)

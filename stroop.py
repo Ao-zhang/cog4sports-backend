@@ -1911,9 +1911,9 @@ def stroop(admin,participant,group,session):
     return returnValue
     # print("stroop finished")
     
-admin = 'admin'
-participant = 'participant'
-group = 'group'
-session = 'session'
-res=stroop(admin, participant, group, session)
-print(res)
+# admin = 'admin'
+# participant = 'participant'
+# group = 'group'
+# session = 'session'
+# res=stroop(admin, participant, group, session)
+# print(res)
