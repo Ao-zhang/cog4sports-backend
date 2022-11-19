@@ -362,7 +362,7 @@ def TTC(admin, participant, group, session):
         trials.addData('key_resp.keys',key_resp.keys)
         if key_resp.keys != None:  # we had a response
             trials.addData('key_resp.rt', key_resp.rt)
-            returnValue.ex_record(key_resp.rt)
+            returnValue.ex_record.append(key_resp.rt)
         end_pos = orig_pos + speed * key_resp.rt
         err_pos = target_pos - end_pos
         trials.addData('end_pos', end_pos)
@@ -521,9 +521,9 @@ def TTC(admin, participant, group, session):
     win.close()
     return returnValue
 
-admin = 'admin'
-participant = 'participant'
-group = 'group'
-session = 'session'
-res=TTC(admin, participant, group, session)
-print(res)
+# admin = 'admin'
+# participant = 'participant'
+# group = 'group'
+# session = 'session'
+# res=TTC(admin, participant, group, session)
+# print(res)
