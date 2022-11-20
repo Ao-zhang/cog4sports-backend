@@ -1294,3 +1294,10 @@ def mental(admin, participant, group, session):
     thisExp.abort()  # or data files will save again on exit
     win.close()
     return returnValue
+
+# admin = 'admin'
+# participant = 'participant'
+# group = 'group'
+# session = 'session'
+# res=mental(admin, participant, group, session)
+# print(res)
