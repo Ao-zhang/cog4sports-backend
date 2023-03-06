@@ -28,6 +28,7 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+ins_img_path='./picResource/stopSignal/instruction.png'
 class stopSignalResponse:
     practice_record = []
     ex_record = []
@@ -95,13 +96,14 @@ def stopSignal(admin, participant, group, session):
 
     # Initialize components for Routine "introduction"
     introductionClock = core.Clock()
-    stop_introduction = visual.TextStim(win=win, name='stop_introduction',
-        text='欢迎参加实验\n您需要对屏幕上呈现的图片刺激作形状判断\n图片有两种形状，一种是圆形，一种是方形。\n如果是圆形请按Z键，如果是方形请按M键。\n在无停止信号任务中，\n呈现的图片并需要您既快又准的判断。\n在停止信号任务中，\n图片刺激呈现后间隔一定的时间向您呈现一个红色圆形\n要求看到该提示时不做反应。\n明白后按空格键进入练习。',
-        font='Open Sans',
-        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=0.0);
+    image = visual.ImageStim(
+        win=win,
+        name='image', 
+        image=ins_img_path, mask=None, 
+        ori=0.0, pos=(0, 0), size=None,
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=-1.0)
     introduction_resp = keyboard.Keyboard()
 
     # Initialize components for Routine "fix"
@@ -280,7 +282,7 @@ def stopSignal(admin, participant, group, session):
     introduction_resp.rt = []
     _introduction_resp_allKeys = []
     # keep track of which components have finished
-    introductionComponents = [stop_introduction, introduction_resp]
+    introductionComponents = [image, introduction_resp]
     for thisComponent in introductionComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -303,14 +305,14 @@ def stopSignal(admin, participant, group, session):
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
-        # *stop_introduction* updates
-        if stop_introduction.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # *image* updates
+        if image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
-            stop_introduction.frameNStart = frameN  # exact frame index
-            stop_introduction.tStart = t  # local t and not account for scr refresh
-            stop_introduction.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(stop_introduction, 'tStartRefresh')  # time at next scr refresh
-            stop_introduction.setAutoDraw(True)
+            image.frameNStart = frameN  # exact frame index
+            image.tStart = t  # local t and not account for scr refresh
+            image.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(image, 'tStartRefresh')  # time at next scr refresh
+            image.setAutoDraw(True)
         
         # *introduction_resp* updates
         waitOnFlip = False
@@ -355,8 +357,8 @@ def stopSignal(admin, participant, group, session):
     for thisComponent in introductionComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    thisExp.addData('stop_introduction.started', stop_introduction.tStartRefresh)
-    thisExp.addData('stop_introduction.stopped', stop_introduction.tStopRefresh)
+    thisExp.addData('image.started', image.tStartRefresh)
+    thisExp.addData('image.stopped', image.tStopRefresh)
     # check responses
     if introduction_resp.keys in ['', [], None]:  # No response was made
         introduction_resp.keys = None
@@ -1647,3 +1649,11 @@ def stopSignal(admin, participant, group, session):
     thisExp.abort()  # or data files will save again on exit
     win.close()
     return returnValue
+
+
+admin = 'admin'
+participant = 'participant'
+group = 'group'
+session = 'session'
+res=stopSignal(admin, participant, group, session)
+print(res)

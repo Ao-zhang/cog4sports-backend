@@ -1,8 +1,8 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on 十一月 09, 2022, at 23:54
+This experiment was created using PsychoPy3 Experiment Builder (v2022.2.4),
+    on 三月 02, 2023, at 19:03
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,7 +28,7 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
-
+ins_img_path='./picResource/TTC/instruction.png'
 class TTCResponse:
     # practice_record = []
     ex_record = []
@@ -42,7 +42,6 @@ class TTCResponse:
 
     def getExAccurate(self):
         return sum(self.ex_record) / len(self.ex_record)
-
 
 def TTC(admin, participant, group, session):
     # Ensure that relative paths start from the same directory as this script
@@ -73,66 +72,70 @@ def TTC(admin, participant, group, session):
 
     # Start Code - component code to be run after the window creation
 
-    # Setup the Window
+    # --- Setup the Window ---
     win = visual.Window(
-        size=[1360, 768], fullscr=False, screen=0,
-        winType='pyglet', allowGUI=False, allowStencil=False,
+        size=[1360, 768], fullscr=False, screen=0, 
+        winType='pyglet', allowStencil=False,
         monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
         blendMode='avg', useFBO=True, 
         units='cm')
+    win.mouseVisible = False
     # store frame rate of monitor if we can measure it
     expInfo['frameRate'] = win.getActualFrameRate()
     if expInfo['frameRate'] != None:
         frameDur = 1.0 / round(expInfo['frameRate'])
     else:
         frameDur = 1.0 / 60.0  # could not measure, so guess
+    # --- Setup input devices ---
 
-    # Setup eyetracking
+    ## Setup eyetracking
     ioDevice = ioConfig = ioSession = ioServer = eyetracker = None
 
     # create a default keyboard (e.g. to check for escape)
     defaultKeyboard = keyboard.Keyboard()
 
-    # Initialize components for Routine "instruction"
-    instructionClock = core.Clock()
-    text_ins = visual.TextStim(win=win, name='text_ins',
-        text='圆圈到达终点时按空格键\n\n按空格键开始',
-        font='Open Sans',
-        units='height', pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=0.0);
+    # --- Initialize components for Routine "instruction" ---
     key_ins = keyboard.Keyboard()
+    instructionClock = core.Clock()
+    image = visual.ImageStim(
+        win=win,
+        name='image', 
+        image=ins_img_path, mask=None,
+        ori=0.0, pos=(0, 0), size=None,
+        color=[1,1,1], colorSpace='rgb', opacity=None,
+        flipHoriz=False, flipVert=False,
+        texRes=128.0, interpolate=True, depth=-1.0)
 
-    # Initialize components for Routine "trial"
     trialClock = core.Clock()
+    # --- Initialize components for Routine "trial" ---
     circle = visual.ShapeStim(
         win=win, name='circle',
         size=(1, 1), vertices='circle',
-        ori=0.0, pos=(0, 0),
+        ori=0.0, pos=(0, 0), 
         lineWidth=1.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
         opacity=None, depth=0.0, interpolate=True)
     arv_line = visual.Line(
         win=win, name='arv_line',
         start=(-(12, 0.5)[0]/2.0, 0), end=(+(12, 0.5)[0]/2.0, 0),
-        ori=90.0, pos=(10, 0),
+        ori=90.0, pos=(10, 0), 
         lineWidth=1.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
         opacity=None, depth=-1.0, interpolate=True)
     key_resp = keyboard.Keyboard()
+    # Run 'Begin Experiment' code from code
     target_pos=10
     hori_pos=0
     orig_pos=0
 
-    # Initialize components for Routine "cross"
     crossClock = core.Clock()
+    # --- Initialize components for Routine "cross" ---
     polygon = visual.ShapeStim(
         win=win, name='polygon', vertices='cross',
         size=(1.5, 1.5),
-        ori=0.0, pos=(0, 0),
+        ori=0.0, pos=(0, 0), 
         lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
         opacity=None, depth=0.0, interpolate=True)
-
-    # Initialize components for Routine "ending"
+    
+    # --- Initialize components for Routine "ending" ---
     endingClock = core.Clock()
     text_ending = visual.TextStim(win=win, name='text_ending',
         text='实验结束，感谢参与！',
@@ -144,16 +147,17 @@ def TTC(admin, participant, group, session):
 
     # Create some handy timers
     globalClock = core.Clock()  # to track the time since experiment started
-    routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
+    routineTimer = core.CountdownTimer()  # to track time remaining of each (possibly non-slip) routine 
 
-    # ------Prepare to start Routine "instruction"-------
+    # --- Prepare to start Routine "instruction" ---
     continueRoutine = True
+
     # update component parameters for each repeat
     key_ins.keys = []
     key_ins.rt = []
     _key_ins_allKeys = []
     # keep track of which components have finished
-    instructionComponents = [text_ins, key_ins]
+    instructionComponents = [key_ins, image]
     for thisComponent in instructionComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -164,10 +168,10 @@ def TTC(admin, participant, group, session):
     # reset timers
     t = 0
     _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    instructionClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    instructionClock.reset(-_timeToFirstFrame)
     frameN = -1
 
-    # -------Run Routine "instruction"-------
+    # --- Run Routine "instruction" ---
     while continueRoutine:
         # get current time
         t = instructionClock.getTime()
@@ -175,15 +179,6 @@ def TTC(admin, participant, group, session):
         tThisFlipGlobal = win.getFutureFlipTime(clock=None)
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
-        
-        # *text_ins* updates
-        if text_ins.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            text_ins.frameNStart = frameN  # exact frame index
-            text_ins.tStart = t  # local t and not account for scr refresh
-            text_ins.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(text_ins, 'tStartRefresh')  # time at next scr refresh
-            text_ins.setAutoDraw(True)
         
         # *key_ins* updates
         waitOnFlip = False
@@ -207,12 +202,24 @@ def TTC(admin, participant, group, session):
                 # a response ends the routine
                 continueRoutine = False
         
+        # *image* updates
+        if image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            image.frameNStart = frameN  # exact frame index
+            image.tStart = t  # local t and not account for scr refresh
+            image.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(image, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            
+            image.setAutoDraw(True)
+        
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
             return returnValue
         
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
+           
             break
         continueRoutine = False  # will revert to True if at least one component still running
         for thisComponent in instructionComponents:
@@ -224,7 +231,7 @@ def TTC(admin, participant, group, session):
         if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
             win.flip()
 
-    # -------Ending Routine "instruction"-------
+    # --- Ending Routine "instruction" ---
     for thisComponent in instructionComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
@@ -249,14 +256,16 @@ def TTC(admin, participant, group, session):
         if thisTrial != None:
             for paramName in thisTrial:
                 exec('{} = thisTrial[paramName]'.format(paramName))
+        
+        # --- Prepare to start Routine "trial" ---
+        continueRoutine = True
         gap_time = thisTrial['gap_time']
         speed = thisTrial['speed']
-        # ------Prepare to start Routine "trial"-------
-        continueRoutine = True
         # update component parameters for each repeat
         key_resp.keys = []
         key_resp.rt = []
         _key_resp_allKeys = []
+        # Run 'Begin Routine' code from code
         total_gap = gap_time + 0.8
         orig_pos = target_pos - total_gap * speed
         hori_pos = orig_pos
@@ -273,10 +282,10 @@ def TTC(admin, participant, group, session):
         # reset timers
         t = 0
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-        trialClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+        trialClock.reset(-_timeToFirstFrame) 
         frameN = -1
         
-        # -------Run Routine "trial"-------
+        # --- Run Routine "trial" ---
         while continueRoutine:
             # get current time
             t = trialClock.getTime()
@@ -299,9 +308,9 @@ def TTC(admin, participant, group, session):
                     # keep track of stop time/frame for later
                     circle.tStop = t  # not accounting for scr refresh
                     circle.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(circle, 'tStopRefresh')  # time at next scr refresh
+                    win.timeOnFlip(circle, 'tStopRefresh')
                     circle.setAutoDraw(False)
-            
+                     
             # *arv_line* updates
             if arv_line.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
@@ -332,6 +341,7 @@ def TTC(admin, participant, group, session):
                     key_resp.rt = _key_resp_allKeys[-1].rt
                     # a response ends the routine
                     continueRoutine = False
+            # Run 'Each Frame' code from code
             hori_pos+=speed/60
             circle.pos=(hori_pos,0)
             
@@ -352,7 +362,7 @@ def TTC(admin, participant, group, session):
             if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
                 win.flip()
         
-        # -------Ending Routine "trial"-------
+        # --- Ending Routine "trial" ---
         for thisComponent in trialComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
@@ -363,6 +373,7 @@ def TTC(admin, participant, group, session):
         if key_resp.keys != None:  # we had a response
             trials.addData('key_resp.rt', key_resp.rt)
             returnValue.ex_record.append(key_resp.rt)
+        # Run 'End Routine' code from code
         end_pos = orig_pos + speed * key_resp.rt
         err_pos = target_pos - end_pos
         trials.addData('end_pos', end_pos)
@@ -370,7 +381,7 @@ def TTC(admin, participant, group, session):
         # the Routine "trial" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
-        # ------Prepare to start Routine "cross"-------
+        # --- Prepare to start Routine "cross" ---
         continueRoutine = True
         routineTimer.add(1.000000)
         # update component parameters for each repeat
@@ -386,11 +397,11 @@ def TTC(admin, participant, group, session):
         # reset timers
         t = 0
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-        crossClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+        crossClock.reset(-_timeToFirstFrame)
         frameN = -1
         
-        # -------Run Routine "cross"-------
-        while continueRoutine and routineTimer.getTime() > 0:
+        # --- Run Routine "cross" ---
+        while continueRoutine and routineTimer.getTime() < 1.0:
             # get current time
             t = crossClock.getTime()
             tThisFlip = win.getFutureFlipTime(clock=crossClock)
@@ -405,6 +416,8 @@ def TTC(admin, participant, group, session):
                 polygon.tStart = t  # local t and not account for scr refresh
                 polygon.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(polygon, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                
                 polygon.setAutoDraw(True)
             if polygon.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
@@ -412,7 +425,8 @@ def TTC(admin, participant, group, session):
                     # keep track of stop time/frame for later
                     polygon.tStop = t  # not accounting for scr refresh
                     polygon.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(polygon, 'tStopRefresh')  # time at next scr refresh
+                    # add timestamp to datafile
+                    win.timeOnFlip(polygon, 'tStopRefresh') 
                     polygon.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
@@ -432,10 +446,11 @@ def TTC(admin, participant, group, session):
             if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
                 win.flip()
         
-        # -------Ending Routine "cross"-------
+        # --- Ending Routine "cross" ---
         for thisComponent in crossComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
+        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
         trials.addData('polygon.started', polygon.tStartRefresh)
         trials.addData('polygon.stopped', polygon.tStopRefresh)
         thisExp.nextEntry()
@@ -443,7 +458,7 @@ def TTC(admin, participant, group, session):
     # completed 20.0 repeats of 'trials'
 
 
-    # ------Prepare to start Routine "ending"-------
+    # --- Prepare to start Routine "ending" ---
     continueRoutine = True
     routineTimer.add(1.000000)
     # update component parameters for each repeat
@@ -459,10 +474,10 @@ def TTC(admin, participant, group, session):
     # reset timers
     t = 0
     _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    endingClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    endingClock.reset(-_timeToFirstFrame)
     frameN = -1
 
-    # -------Run Routine "ending"-------
+    # --- Run Routine "ending" ---
     while continueRoutine and routineTimer.getTime() > 0:
         # get current time
         t = endingClock.getTime()
@@ -485,7 +500,7 @@ def TTC(admin, participant, group, session):
                 # keep track of stop time/frame for later
                 text_ending.tStop = t  # not accounting for scr refresh
                 text_ending.frameNStop = frameN  # exact frame index
-                win.timeOnFlip(text_ending, 'tStopRefresh')  # time at next scr refresh
+                win.timeOnFlip(text_ending, 'tStopRefresh')
                 text_ending.setAutoDraw(False)
         
         # check for quit (typically the Esc key)
@@ -505,18 +520,22 @@ def TTC(admin, participant, group, session):
         if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
             win.flip()
 
-    # -------Ending Routine "ending"-------
+    # --- Ending Routine "ending" ---
     for thisComponent in endingComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
+  
 
+    # --- End experiment ---
     # Flip one final time so any remaining win.callOnFlip() 
     # and win.timeOnFlip() tasks get executed before quitting
     win.flip()
 
     # these shouldn't be strictly necessary (should auto-save)
     thisExp.saveAsWideText(filename+'.csv', delim='auto')
+ 
     # make sure everything is closed down
+ 
     thisExp.abort()  # or data files will save again on exit
     win.close()
     return returnValue

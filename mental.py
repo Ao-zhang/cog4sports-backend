@@ -1,8 +1,8 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on 十一月 09, 2022, at 23:50
+    on 二月 28, 2023, at 13:45
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -66,7 +66,7 @@ def mental(admin, participant, group, session):
                                      savePickle=False, saveWideText=True,
                                      originPath='./',
                                      dataFileName=filename)
-
+    
     endExpNow = False  # flag for 'escape' or other condition => quit the exp
     frameTolerance = 0.001  # how close to onset before 'same' frame
 
@@ -74,7 +74,7 @@ def mental(admin, participant, group, session):
 
     # Setup the Window
     win = visual.Window(
-        size=(1024, 768), fullscr=False, screen=0,
+        size=(1024, 768), fullscr=False, screen=0, 
         winType='pyglet', allowGUI=False, allowStencil=False,
         monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
         blendMode='avg', useFBO=True, 
@@ -96,7 +96,7 @@ def mental(admin, participant, group, session):
     instructionClock = core.Clock()
     key_resp = keyboard.Keyboard()
     text = visual.TextStim(win=win, name='text',
-        text=' 欢迎参加本实验\n在实验中会出现人形图片，您需要判断图中\n人物抬起的是左侧手臂还是右侧手臂，并作\n出又快又准的判断，左侧按F键，右侧按J键。\n明白后按任意键进行练习。\n',
+        text=' 欢迎参加本实验\n在实验中会出现人形图片，您需要带入图中\n人物并判断抬起的是自身左手还是右手，并作\n出又快又准的判断，左侧按F键，右侧按J键。\n明白后按任意键进行练习。\n',
         font='Open Sans',
         pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -400,7 +400,7 @@ def mental(admin, participant, group, session):
                 thisComponent.setAutoDraw(False)
         practice.addData('text_2.started', text_2.tStartRefresh)
         practice.addData('text_2.stopped', text_2.tStopRefresh)
-
+        
         # ------Prepare to start Routine "stim"-------
         continueRoutine = True
         # update component parameters for each repeat
@@ -733,7 +733,6 @@ def mental(admin, participant, group, session):
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
         crossClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
         frameN = -1
-
         picture = thisBlock1['picture']
         RightAns = thisBlock1['RightAns']
         
@@ -786,7 +785,7 @@ def mental(admin, participant, group, session):
                 thisComponent.setAutoDraw(False)
         block1.addData('text_2.started', text_2.tStartRefresh)
         block1.addData('text_2.stopped', text_2.tStopRefresh)
-
+        
         # ------Prepare to start Routine "stim"-------
         continueRoutine = True
         # update component parameters for each repeat
@@ -1043,7 +1042,7 @@ def mental(admin, participant, group, session):
         frameN = -1
         picture = thisBlock2['picture']
         RightAns = thisBlock2['RightAns']
-        
+
         # -------Run Routine "cross"-------
         while continueRoutine and routineTimer.getTime() > 0:
             # get current time
@@ -1093,7 +1092,7 @@ def mental(admin, participant, group, session):
                 thisComponent.setAutoDraw(False)
         block2.addData('text_2.started', text_2.tStartRefresh)
         block2.addData('text_2.stopped', text_2.tStopRefresh)
-
+        
         # ------Prepare to start Routine "stim"-------
         continueRoutine = True
         # update component parameters for each repeat
@@ -1290,14 +1289,16 @@ def mental(admin, participant, group, session):
 
     # these shouldn't be strictly necessary (should auto-save)
     thisExp.saveAsWideText(filename+'.csv', delim='auto')
+
     # make sure everything is closed down
     thisExp.abort()  # or data files will save again on exit
     win.close()
     return returnValue
 
-# admin = 'admin'
-# participant = 'participant'
-# group = 'group'
-# session = 'session'
-# res=mental(admin, participant, group, session)
-# print(res)
+
+admin = 'admin'
+participant = 'participant'
+group = 'group'
+session = 'session'
+res=mental(admin, participant, group, session)
+print(res)
