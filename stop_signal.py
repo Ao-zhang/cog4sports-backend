@@ -96,6 +96,7 @@ def stopSignal(admin, participant, group, session):
 
     # Initialize components for Routine "introduction"
     introductionClock = core.Clock()
+    introduction_resp = keyboard.Keyboard()
     image = visual.ImageStim(
         win=win,
         name='image', 
@@ -104,7 +105,6 @@ def stopSignal(admin, participant, group, session):
         color=[1,1,1], colorSpace='rgb', opacity=None,
         flipHoriz=False, flipVert=False,
         texRes=128.0, interpolate=True, depth=-1.0)
-    introduction_resp = keyboard.Keyboard()
 
     # Initialize components for Routine "fix"
     fixClock = core.Clock()
@@ -282,7 +282,7 @@ def stopSignal(admin, participant, group, session):
     introduction_resp.rt = []
     _introduction_resp_allKeys = []
     # keep track of which components have finished
-    introductionComponents = [image, introduction_resp]
+    introductionComponents = [introduction_resp, image]
     for thisComponent in introductionComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -304,16 +304,7 @@ def stopSignal(admin, participant, group, session):
         tThisFlipGlobal = win.getFutureFlipTime(clock=None)
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
-        
-        # *image* updates
-        if image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            image.frameNStart = frameN  # exact frame index
-            image.tStart = t  # local t and not account for scr refresh
-            image.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(image, 'tStartRefresh')  # time at next scr refresh
-            image.setAutoDraw(True)
-        
+              
         # *introduction_resp* updates
         waitOnFlip = False
         if introduction_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
@@ -336,6 +327,15 @@ def stopSignal(admin, participant, group, session):
                 # a response ends the routine
                 continueRoutine = False
         
+        # *image* updates
+        if image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            image.frameNStart = frameN  # exact frame index
+            image.tStart = t  # local t and not account for scr refresh
+            image.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(image, 'tStartRefresh')  # time at next scr refresh
+            image.setAutoDraw(True)
+        
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
             return returnValue
@@ -357,8 +357,6 @@ def stopSignal(admin, participant, group, session):
     for thisComponent in introductionComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    thisExp.addData('image.started', image.tStartRefresh)
-    thisExp.addData('image.stopped', image.tStopRefresh)
     # check responses
     if introduction_resp.keys in ['', [], None]:  # No response was made
         introduction_resp.keys = None
@@ -368,6 +366,8 @@ def stopSignal(admin, participant, group, session):
     thisExp.addData('introduction_resp.started', introduction_resp.tStartRefresh)
     thisExp.addData('introduction_resp.stopped', introduction_resp.tStopRefresh)
     thisExp.nextEntry()
+    thisExp.addData('image.started', image.tStartRefresh)
+    thisExp.addData('image.stopped', image.tStopRefresh)
     # the Routine "introduction" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
 
@@ -1651,9 +1651,9 @@ def stopSignal(admin, participant, group, session):
     return returnValue
 
 
-admin = 'admin'
-participant = 'participant'
-group = 'group'
-session = 'session'
-res=stopSignal(admin, participant, group, session)
-print(res)
+# admin = 'admin'
+# participant = 'participant'
+# group = 'group'
+# session = 'session'
+# res=stopSignal(admin, participant, group, session)
+# print(res)

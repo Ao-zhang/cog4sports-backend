@@ -79,14 +79,12 @@ def TTC(admin, participant, group, session):
         monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
         blendMode='avg', useFBO=True, 
         units='cm')
-    win.mouseVisible = False
     # store frame rate of monitor if we can measure it
     expInfo['frameRate'] = win.getActualFrameRate()
     if expInfo['frameRate'] != None:
         frameDur = 1.0 / round(expInfo['frameRate'])
     else:
         frameDur = 1.0 / 60.0  # could not measure, so guess
-    # --- Setup input devices ---
 
     ## Setup eyetracking
     ioDevice = ioConfig = ioSession = ioServer = eyetracker = None
@@ -95,8 +93,8 @@ def TTC(admin, participant, group, session):
     defaultKeyboard = keyboard.Keyboard()
 
     # --- Initialize components for Routine "instruction" ---
-    key_ins = keyboard.Keyboard()
     instructionClock = core.Clock()
+    key_ins = keyboard.Keyboard()
     image = visual.ImageStim(
         win=win,
         name='image', 
@@ -111,7 +109,7 @@ def TTC(admin, participant, group, session):
     circle = visual.ShapeStim(
         win=win, name='circle',
         size=(1, 1), vertices='circle',
-        ori=0.0, pos=(0, 0), 
+        ori=0.0, pos=(0, 0),
         lineWidth=1.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
         opacity=None, depth=0.0, interpolate=True)
     arv_line = visual.Line(
@@ -121,13 +119,11 @@ def TTC(admin, participant, group, session):
         lineWidth=1.0,     colorSpace='rgb',  lineColor='black', fillColor='black',
         opacity=None, depth=-1.0, interpolate=True)
     key_resp = keyboard.Keyboard()
-    # Run 'Begin Experiment' code from code
     target_pos=10
     hori_pos=0
     orig_pos=0
 
     crossClock = core.Clock()
-    # --- Initialize components for Routine "cross" ---
     polygon = visual.ShapeStim(
         win=win, name='polygon', vertices='cross',
         size=(1.5, 1.5),
@@ -151,7 +147,6 @@ def TTC(admin, participant, group, session):
 
     # --- Prepare to start Routine "instruction" ---
     continueRoutine = True
-
     # update component parameters for each repeat
     key_ins.keys = []
     key_ins.rt = []
@@ -168,7 +163,7 @@ def TTC(admin, participant, group, session):
     # reset timers
     t = 0
     _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    instructionClock.reset(-_timeToFirstFrame)
+    instructionClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
     frameN = -1
 
     # --- Run Routine "instruction" ---
@@ -209,8 +204,6 @@ def TTC(admin, participant, group, session):
             image.tStart = t  # local t and not account for scr refresh
             image.tStartRefresh = tThisFlipGlobal  # on global time
             win.timeOnFlip(image, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            
             image.setAutoDraw(True)
         
         # check for quit (typically the Esc key)
@@ -219,7 +212,6 @@ def TTC(admin, participant, group, session):
         
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
-           
             break
         continueRoutine = False  # will revert to True if at least one component still running
         for thisComponent in instructionComponents:
@@ -235,6 +227,8 @@ def TTC(admin, participant, group, session):
     for thisComponent in instructionComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
+    thisExp.addData('image.started', image.tStartRefresh)
+    thisExp.addData('image.stopped', image.tStopRefresh)        
     # the Routine "instruction" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
 
@@ -282,7 +276,7 @@ def TTC(admin, participant, group, session):
         # reset timers
         t = 0
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-        trialClock.reset(-_timeToFirstFrame) 
+        trialClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
         frameN = -1
         
         # --- Run Routine "trial" ---
@@ -293,7 +287,7 @@ def TTC(admin, participant, group, session):
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
-            
+        
             # *circle* updates
             if circle.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
@@ -401,7 +395,7 @@ def TTC(admin, participant, group, session):
         frameN = -1
         
         # --- Run Routine "cross" ---
-        while continueRoutine and routineTimer.getTime() < 1.0:
+        while continueRoutine and routineTimer.getTime() > 0:
             # get current time
             t = crossClock.getTime()
             tThisFlip = win.getFutureFlipTime(clock=crossClock)
@@ -416,8 +410,6 @@ def TTC(admin, participant, group, session):
                 polygon.tStart = t  # local t and not account for scr refresh
                 polygon.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(polygon, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                
                 polygon.setAutoDraw(True)
             if polygon.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
@@ -425,7 +417,6 @@ def TTC(admin, participant, group, session):
                     # keep track of stop time/frame for later
                     polygon.tStop = t  # not accounting for scr refresh
                     polygon.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
                     win.timeOnFlip(polygon, 'tStopRefresh') 
                     polygon.setAutoDraw(False)
             
@@ -450,7 +441,6 @@ def TTC(admin, participant, group, session):
         for thisComponent in crossComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
         trials.addData('polygon.started', polygon.tStartRefresh)
         trials.addData('polygon.stopped', polygon.tStopRefresh)
         thisExp.nextEntry()
@@ -474,7 +464,7 @@ def TTC(admin, participant, group, session):
     # reset timers
     t = 0
     _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    endingClock.reset(-_timeToFirstFrame)
+    endingClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
     frameN = -1
 
     # --- Run Routine "ending" ---
@@ -500,7 +490,7 @@ def TTC(admin, participant, group, session):
                 # keep track of stop time/frame for later
                 text_ending.tStop = t  # not accounting for scr refresh
                 text_ending.frameNStop = frameN  # exact frame index
-                win.timeOnFlip(text_ending, 'tStopRefresh')
+                win.timeOnFlip(text_ending, 'tStopRefresh')  # time at next scr refresh
                 text_ending.setAutoDraw(False)
         
         # check for quit (typically the Esc key)
@@ -540,9 +530,9 @@ def TTC(admin, participant, group, session):
     win.close()
     return returnValue
 
-# admin = 'admin'
-# participant = 'participant'
-# group = 'group'
-# session = 'session'
-# res=TTC(admin, participant, group, session)
-# print(res)
+admin = 'admin'
+participant = 'participant'
+group = 'group'
+session = 'session'
+res=TTC(admin, participant, group, session)
+print(res)
